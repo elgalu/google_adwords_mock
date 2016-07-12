@@ -10,7 +10,11 @@
 # set -u: treat unset variables as an error and exit immediately
 # set -xeu
 
-python -m http.server ${MOCK_SERVER_PORT} &
+# python3:
+#  python -m http.server
+# python2:
+#  python -m SimpleHTTPServer
+python -m SimpleHTTPServer ${MOCK_SERVER_PORT} &
 SERVER_PID=$!
 
 trap "kill $SERVER_PID" exit INT TERM

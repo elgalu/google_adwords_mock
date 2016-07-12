@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/python/
-FROM python:3.5-alpine
+FROM python:2.7-alpine
 
 RUN mkdir /var/log/cont
 
