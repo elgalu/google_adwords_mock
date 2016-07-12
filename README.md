@@ -13,6 +13,10 @@ Mock of http://www.google.com/adwords/ for testing
       -e MOCK_SERVER_PORT=3333 \
       elgalu/google_adwords_mock
 
+One liner and exposing the port
+
+    docker run --rm -ti --name=adwords_mock -p 33001:33001 elgalu/google_adwords_mock
+
 ### Push
 
     docker push elgalu/google_adwords_mock
