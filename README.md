@@ -14,9 +14,12 @@ One liner and exposing the port
 
 Multi-line without exposing the port (you will need to docker inspect the IP)
 
-    docker run --rm -ti --name=adwords_mock \
-      -e MOCK_SERVER_PORT=3333 \
-      elgalu/google_adwords_mock
+    docker run --rm -ti --name=adwords_mock -P elgalu/google_adwords_mock
+
+Find out IP and Port
+
+    IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' grid_adwords_mock)
+    PORT=$(docker inspect -f='{{(index (index .NetworkSettings.Ports "33001/tcp") 0).HostPort}}' grid_adwords_mock)
 
 ### Push
 

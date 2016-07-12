@@ -1,20 +1,13 @@
 #!/bin/sh
 
-# WARNING: not being used now
-# CMD [ "sh", "-c", "python -m http.server ${MOCK_SERVER_PORT}" ]
-# CMD ["/usr/local/bin/entry.sh"]
-# CMD [ "sh", "-c", "python", "-m", "http.server", "${MOCK_SERVER_PORT}"]
-
-# set -e: exit asap if a command exits with a non-zero status
-# set -x: print each command right before it is executed
-# set -u: treat unset variables as an error and exit immediately
-# set -xeu
-
-# python3:
+# Python 3:
 #  python -m http.server
-# python2:
+# Python 2:
 #  python -m SimpleHTTPServer
-python -m SimpleHTTPServer ${MOCK_SERVER_PORT} &
+# python -m SimpleHTTPServer ${MOCK_SERVER_PORT} &
+
+# NodeJS
+http-server -p ${MOCK_SERVER_PORT} &
 SERVER_PID=$!
 
 trap "kill $SERVER_PID" exit INT TERM
