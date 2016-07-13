@@ -1,17 +1,32 @@
-# https://hub.docker.com/_/python/
+#-----------------------------------
+# Python
+#  https://hub.docker.com/_/python/
+#-----------------------------------
 # FROM python:2.7-alpine
 
-# https://hub.docker.com/_/node/
+#-----------------------------------
+# Java
+#  https://hub.docker.com/_/java/
+#-----------------------------------
+# FROM java:jre
+
+#-----------------------------------
+# NodeJS
+#  https://hub.docker.com/_/node/
+#-----------------------------------
 FROM node:6-slim
 RUN npm install http-server -g
 
+#----------#
+#- Common -#
+#----------#
 RUN mkdir /var/log/cont
 
-ADD bin/entry.sh /usr/local/bin/
+ADD bin/* /usr/local/bin/
 ADD site /site
 
 WORKDIR /site
-ENV MOCK_SERVER_PORT=33001
+ENV MOCK_SERVER_PORT=8080
 
 EXPOSE ${MOCK_SERVER_PORT}
-CMD ["/usr/local/bin/entry.sh"]
+CMD ["/usr/local/bin/entry-nodejs.sh"]

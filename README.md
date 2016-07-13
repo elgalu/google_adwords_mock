@@ -10,7 +10,7 @@ Mock of http://www.google.com/adwords/ for testing
 ### Run
 One liner and exposing the port
 
-    docker run --rm -ti --name=adwords_mock -p 33001:33001 elgalu/google_adwords_mock
+    docker run --rm -ti --name=adwords_mock -p 8080:8080 elgalu/google_adwords_mock
 
 Multi-line without exposing the port (you will need to docker inspect the IP)
 
@@ -19,7 +19,7 @@ Multi-line without exposing the port (you will need to docker inspect the IP)
 Find out IP and Port
 
     IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' grid_adwords_mock)
-    PORT=$(docker inspect -f='{{(index (index .NetworkSettings.Ports "33001/tcp") 0).HostPort}}' grid_adwords_mock)
+    PORT=$(docker inspect -f='{{(index (index .NetworkSettings.Ports "8080/tcp") 0).HostPort}}' grid_adwords_mock)
 
 ### Push
 
@@ -33,7 +33,7 @@ Test google for example
 
 Test mock for example
 
-    export MOCK_SERVER_PORT=33001 MOCK_SERVER_HOST=d.host.loc.dev SELENIUM_HUB_HOST=d.host.loc.dev
+    export MOCK_SERVER_PORT=8080 MOCK_SERVER_HOST=d.host.loc.dev SELENIUM_HUB_HOST=d.host.loc.dev
     ./test/python_test.py firefox
 
 ### Cleanup

@@ -6,8 +6,7 @@
 #  python -m SimpleHTTPServer
 # python -m SimpleHTTPServer ${MOCK_SERVER_PORT} &
 
-# NodeJS
-http-server -p ${MOCK_SERVER_PORT} &
+python -m SimpleHTTPServer ${MOCK_SERVER_PORT} &
 SERVER_PID=$!
 
 trap "kill $SERVER_PID" exit INT TERM
